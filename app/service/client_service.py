@@ -4,7 +4,6 @@ from fastapi.encoders import jsonable_encoder
 from app.service.http_client import client
 from app.db.database import db
 
-
 async def get_all_clients(data, token: str):
     payload = jsonable_encoder(data)
 
