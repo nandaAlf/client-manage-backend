@@ -1,13 +1,13 @@
 from fastapi import APIRouter, FastAPI
-# from app.routers import auth, clients
+from app.routers import auth_router, client_router
 
 app = FastAPI(
     title="FastApi Local API",
     version="1.0.0"
 )
 router = APIRouter()
-# app.include_router(auth.router)
-# app.include_router(clients.router)
+app.include_router(auth_router.router)
+app.include_router(client_router.router)
 
 
 @app.get("/")
