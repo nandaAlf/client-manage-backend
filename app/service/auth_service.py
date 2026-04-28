@@ -39,8 +39,6 @@ async def login_service(username: str, password: str):
         "data": result
     }
     
-
-
 async def register_service(username: str, email: str, password: str):
 
     # validation
@@ -101,4 +99,12 @@ async def register_service(username: str, email: str, password: str):
     return {
         "status": result.get("status", "Success"),
         "message": result.get("message", "Usuario creado correctamente")
+    }
+
+async def logout_service(token: str):
+    await db.sesiones.delete_one({"token": token})
+
+    return {
+        "status": "success",
+        "message": "Sesión cerrada correctamente"
     }

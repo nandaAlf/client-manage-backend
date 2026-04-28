@@ -5,7 +5,7 @@ from app.utils.token import get_token
 
 router = APIRouter(prefix="/client", tags=["Client"])
 
-@router.post("/list")
+@router.post("/list/")
 async def getAll(data: ClientListRequest, token: str = Depends(get_token)):
     return await get_all_clients(data, token)
 
@@ -18,6 +18,7 @@ async def get_by_id(
 
 @router.post("/")
 async def create(data: ClientRequest, token: str = Depends(get_token)):
+    return await create_client(data, token)
     return await create_client(data, token)
 
 @router.patch("/")
